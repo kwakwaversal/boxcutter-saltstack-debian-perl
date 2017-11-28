@@ -1,0 +1,3 @@
+[submodule "boxcutter/debian"]
+	path = boxcutter/debian
+	url = https://github.com/kwakwaversal/boxcutter-debian.git
