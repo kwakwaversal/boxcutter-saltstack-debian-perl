@@ -3,9 +3,11 @@ Debian Jessie Vagrant box with pre-baked tools aimed at Perl web developers.
 
 # Synopsis
 ```sh
-# First create the VirtualBox provider
-$ packer build -only=virtualbox-iso debian-8.7-amd64.json
-$ vagrant box add --name my/debian-jessie64 ./builds/debian-8.7.virtualbox.box
+# Inject provisioner into template of your choice
+$ ./bin/boxcutter-inject-provisioner -t salt-masterless debian.json > debian-salt.json
+# Create the VirtualBox provider using new template
+$ packer build -only=virtualbox-iso -var-file=debian8.json debian-salt.json
+$ vagrant box add --name my/debian-jessie64 ./builds/debian-8.10.virtualbox.box
 # Use the newly created box with Vagrant
 $ vagrant init my/debian-jessie64
 $ vagrant up
